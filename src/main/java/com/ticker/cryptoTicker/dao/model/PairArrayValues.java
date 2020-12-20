@@ -19,23 +19,16 @@ public class PairArrayValues implements Serializable {
     private Date fetchedTime;
 
     @Column(name = "firstParameter", nullable = true)
-    private float firstParameter;
+    private String firstParameter;
 
     @Column(name = "secondParameter", nullable = true)
-    private float secondParameter;
+    private String secondParameter;
 
     @Column(name = "thirdParameter", nullable = true)
-    private float thirdParameter;
+    private String thirdParameter;
 
     private int pairId;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Date getFetchedTime() {
         return fetchedTime;
@@ -45,27 +38,35 @@ public class PairArrayValues implements Serializable {
         this.fetchedTime = fetchedTime;
     }
 
-    public float getFirstParameter() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstParameter() {
         return firstParameter;
     }
 
-    public void setFirstParameter(float firstParameter) {
+    public void setFirstParameter(String firstParameter) {
         this.firstParameter = firstParameter;
     }
 
-    public float getSecondParameter() {
+    public String getSecondParameter() {
         return secondParameter;
     }
 
-    public void setSecondParameter(float secondParameter) {
+    public void setSecondParameter(String secondParameter) {
         this.secondParameter = secondParameter;
     }
 
-    public float getThirdParameter() {
+    public String getThirdParameter() {
         return thirdParameter;
     }
 
-    public void setThirdParameter(float thirdParameter) {
+    public void setThirdParameter(String thirdParameter) {
         this.thirdParameter = thirdParameter;
     }
 
