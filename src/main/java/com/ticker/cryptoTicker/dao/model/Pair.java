@@ -12,18 +12,23 @@ public class Pair implements Serializable {
     private static final long serialVersionUID = 8349227617715553479L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "pairName", nullable = false, length = 1)
+    @Column(name = "pair_Name", nullable = false, length = 1)
     private String pairName;
+
+    @Column(name = "ticker_Id")
+    private int tickerId;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JoinColumn(name = "tickerId")
     private List<PairArrayValues> pairArrayValues;
-//    private int tickerId;
+
 
     public int getId() {
         return id;
@@ -49,11 +54,11 @@ public class Pair implements Serializable {
         this.pairArrayValues = pairArrayValues;
     }
 
-    //    public int getTickerId() {
-//        return tickerId;
-//    }
-//
-//    public void setTickerId(int tickerId) {
-//        this.tickerId = tickerId;
-//    }
+    public int getTickerId() {
+        return tickerId;
+    }
+
+    public void setTickerId(int tickerId) {
+        this.tickerId = tickerId;
+    }
 }

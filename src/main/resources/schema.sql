@@ -1,22 +1,22 @@
-CREATE TABLE public.ticker
+create table public.ticker
 (
 --https://dzone.com/articles/bounty-spring-boot-and-postgresql-database
-    id SERIAL PRIMARY KEY NOT NULL,
-    tickerName VARCHAR(50) NOT NULL
+    id serial primary key not null,
+    ticker_Name varchar(50) not null
 );
 
-CREATE TABLE public.pair
+create table public.pair
 (
-    id SERIAL PRIMARY KEY,
-    pairName VARCHAR(1) ,
-    tickerId INTEGER NOT NULL references public.ticker(id)
+    id serial primary key,
+    pair_Name varchar(1) ,
+    ticker_Id integer not null references public.ticker(id)
 );
-CREATE TABLE public.pairArrayValues
+create table public.pair_array_values
 (
-    id SERIAL PRIMARY KEY,
-    fetchedTime DATE NOT NULL DEFAULT CURRENT_DATE,
-    firstParameter NUMERIC,
-    secondParameter NUMERIC,
-    thirdParameter NUMERIC,
-    pairId INTEGER NOT NULL references public.pair(id)
+    id serial primary key,
+    fetched_Time date not null default current_date,
+    first_Parameter numeric,
+    second_Parameter numeric,
+    third_Parameter numeric,
+    pair_Id integer not null references public.pair(id)
 );

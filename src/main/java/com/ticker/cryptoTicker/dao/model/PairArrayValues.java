@@ -2,31 +2,34 @@ package com.ticker.cryptoTicker.dao.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "pairArrayValues")
+@Table(name = "pair_array_values")
 @SequenceGenerator(name = "pairArrayValuesSeq", allocationSize = 1)
 public class PairArrayValues implements Serializable {
 
     private static final long serialVersionUID = 6240756137794169205L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "fetchedTime", nullable = false)
+    @Column(name = "fetched_Time", nullable = false)
     private Date fetchedTime;
 
-    @Column(name = "firstParameter", nullable = true)
-    private String firstParameter;
+    @Column(name = "first_Parameter", nullable = true)
+    private BigDecimal firstParameter;
 
-    @Column(name = "secondParameter", nullable = true)
-    private String secondParameter;
+    @Column(name = "second_Parameter", nullable = true)
+    private BigDecimal secondParameter;
 
-    @Column(name = "thirdParameter", nullable = true)
-    private String thirdParameter;
+    @Column(name = "third_Parameter", nullable = true)
+    private BigDecimal thirdParameter;
 
+    @Column(name = "pair_Id")
     private int pairId;
 
 
@@ -46,27 +49,27 @@ public class PairArrayValues implements Serializable {
         this.id = id;
     }
 
-    public String getFirstParameter() {
+    public BigDecimal getFirstParameter() {
         return firstParameter;
     }
 
-    public void setFirstParameter(String firstParameter) {
+    public void setFirstParameter(BigDecimal firstParameter) {
         this.firstParameter = firstParameter;
     }
 
-    public String getSecondParameter() {
+    public BigDecimal getSecondParameter() {
         return secondParameter;
     }
 
-    public void setSecondParameter(String secondParameter) {
+    public void setSecondParameter(BigDecimal secondParameter) {
         this.secondParameter = secondParameter;
     }
 
-    public String getThirdParameter() {
+    public BigDecimal getThirdParameter() {
         return thirdParameter;
     }
 
-    public void setThirdParameter(String thirdParameter) {
+    public void setThirdParameter(BigDecimal thirdParameter) {
         this.thirdParameter = thirdParameter;
     }
 

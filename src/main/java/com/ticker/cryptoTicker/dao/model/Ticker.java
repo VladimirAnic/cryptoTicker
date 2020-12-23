@@ -12,16 +12,18 @@ public class Ticker implements Serializable {
     private static final long serialVersionUID = 1918364797615635405L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "tickerName", nullable = false, length = 50)
+    @Column(name = "ticker_Name", nullable = false, length = 50)
     private String tickerName;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JoinColumn(name = "pair_Id")
     private List<Pair> pairs;
 
     public int getId() {
