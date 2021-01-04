@@ -53,14 +53,19 @@ public class TickerDataScheduledTask {
                     s ->
                     {
 
-                        tickerRepository.findAll().iterator().forEachRemaining(
-                                ticker1 -> {
-                                    if (!ticker1.getTickerName().equals(s)) {
-                                        ticker.setTickerName(s);
-                                        tickerRepository.save(ticker);
+                        if (tickerRepository.findAll().iterator().hasNext()) {
+                            tickerRepository.findAll().iterator().forEachRemaining(
+                                    ticker1 -> {
+                                        if (!ticker1.getTickerName().equals(s)) {
+                                            ticker.setTickerName(s);
+                                            tickerRepository.save(ticker);
+                                        }
                                     }
-                                }
-                        );
+                            );
+                        } else {
+                            ticker.setTickerName(s);
+                            tickerRepository.save(ticker);
+                        }
                     }
             );
 

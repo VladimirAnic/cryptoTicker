@@ -17,23 +17,23 @@ public class Ticker implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticker_id_seq")
     @SequenceGenerator(name = "ticker_id_seq", sequenceName = "ticker_id_seq", allocationSize = 1)
     @Column(name = "ticker_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "ticker_name", nullable = false, length = 50)
     private String tickerName;
 
     @OneToMany(
+            mappedBy = "ticker",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pair_id")
-    private List<Pair> pairs;
+    private List<TickerPair> pairs;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,11 +45,11 @@ public class Ticker implements Serializable {
         this.tickerName = tickerName;
     }
 
-    public List<Pair> getPairs() {
+    public List<TickerPair> getPairs() {
         return pairs;
     }
 
-    public void setPairs(List<Pair> pairs) {
+    public void setPairs(List<TickerPair> pairs) {
         this.pairs = pairs;
     }
 }

@@ -13,7 +13,6 @@ create table public.pair
     (
         pair_id serial primary key,
         pair_name varchar(1)
-    --    ticker_id integer references public.ticker(ticker_id)
     );
 create table public.pair_array_values
     (

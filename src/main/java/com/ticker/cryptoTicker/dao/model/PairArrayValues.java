@@ -15,7 +15,7 @@ public class PairArrayValues implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pair_array_values_id_seq")
     @SequenceGenerator(name = "pair_array_values_id_seq", sequenceName = "pair_array_values_id_seq", allocationSize = 1)
     @Column(name = "pair_array_values_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "fetched_time", nullable = false)
     private Date fetchedTime;
@@ -41,11 +41,11 @@ public class PairArrayValues implements Serializable {
         this.fetchedTime = fetchedTime;
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
