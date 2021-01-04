@@ -6,30 +6,30 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "pair_array_values")
-@SequenceGenerator(name = "pairArrayValuesSeq", allocationSize = 1)
+@Table(schema = "public", name = "pair_array_values")
 public class PairArrayValues implements Serializable {
 
     private static final long serialVersionUID = 6240756137794169205L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pair_array_values_id_seq")
+    @SequenceGenerator(name = "pair_array_values_id_seq", sequenceName = "pair_array_values_id_seq", allocationSize = 1)
+    @Column(name = "pair_array_values_id")
     private Integer id;
 
-    @Column(name = "fetched_Time", nullable = false)
+    @Column(name = "fetched_time", nullable = false)
     private Date fetchedTime;
 
-    @Column(name = "first_Parameter", nullable = true)
+    @Column(name = "first_parameter", nullable = true)
     private BigDecimal firstParameter;
 
-    @Column(name = "second_Parameter", nullable = true)
+    @Column(name = "second_parameter", nullable = true)
     private BigDecimal secondParameter;
 
-    @Column(name = "third_Parameter", nullable = true)
+    @Column(name = "third_parameter", nullable = true)
     private BigDecimal thirdParameter;
 
-    @Column(name = "pair_Id")
+    @Column(name = "pair_id")
     private int pairId;
 
 
@@ -79,5 +79,17 @@ public class PairArrayValues implements Serializable {
 
     public void setPairId(int pairId) {
         this.pairId = pairId;
+    }
+
+    @Override
+    public String toString() {
+        return "PairArrayValues{" +
+                "id=" + id +
+                ", fetchedTime=" + fetchedTime +
+                ", firstParameter=" + firstParameter +
+                ", secondParameter=" + secondParameter +
+                ", thirdParameter=" + thirdParameter +
+                ", pairId=" + pairId +
+                '}';
     }
 }

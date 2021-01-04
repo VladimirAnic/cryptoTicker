@@ -1,29 +1,32 @@
 package com.ticker.cryptoTicker.dao.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "ticker")
-@SequenceGenerator(name = "tickerSeq", allocationSize = 1)
+@Table(schema = "public", name = "ticker")
+@Proxy(lazy = false)
 public class Ticker implements Serializable {
 
     private static final long serialVersionUID = 1918364797615635405L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticker_id_seq")
+    @SequenceGenerator(name = "ticker_id_seq", sequenceName = "ticker_id_seq", allocationSize = 1)
+    @Column(name = "ticker_id")
     private Integer id;
 
-    @Column(name = "ticker_Name", nullable = false, length = 50)
+    @Column(name = "ticker_name", nullable = false, length = 50)
     private String tickerName;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JoinColumn(name = "pair_Id")
+    @JoinColumn(name = "pair_id")
     private List<Pair> pairs;
 
     public int getId() {
