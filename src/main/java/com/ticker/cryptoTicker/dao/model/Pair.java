@@ -2,10 +2,11 @@ package com.ticker.cryptoTicker.dao.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(schema = "public", name = "pair")
+@Entity(name = "Pair")
+@Table(name = "pair", schema = "public")
 public class Pair implements Serializable {
 
     private static final long serialVersionUID = 8349227617715553479L;
@@ -25,7 +26,7 @@ public class Pair implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<TickerPair> tickers;
+    private List<TickerPair> tickers = new ArrayList<>();
 
     @OneToMany(
             cascade = CascadeType.ALL,
@@ -66,4 +67,5 @@ public class Pair implements Serializable {
     public void setTickers(List<TickerPair> tickers) {
         this.tickers = tickers;
     }
+
 }

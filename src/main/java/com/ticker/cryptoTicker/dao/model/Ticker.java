@@ -1,14 +1,13 @@
 package com.ticker.cryptoTicker.dao.model;
 
-import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(schema = "public", name = "ticker")
-@Proxy(lazy = false)
+@Entity(name = "Ticker")
+@Table(name = "ticker", schema = "public")
 public class Ticker implements Serializable {
 
     private static final long serialVersionUID = 1918364797615635405L;
@@ -27,7 +26,7 @@ public class Ticker implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<TickerPair> pairs;
+    private List<TickerPair> pairs = new ArrayList<>();
 
     public Long getId() {
         return id;

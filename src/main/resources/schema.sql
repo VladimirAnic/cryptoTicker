@@ -23,18 +23,18 @@ create table public.pair_array_values
         third_parameter numeric,
         pair_id integer references public.pair(pair_id)
     );
-create sequence ticker_id_seq start with 1 increment by 50;
-create sequence pair_array_values_id_seq start with 1 increment by 50;
-create sequence pair_id_seq start with 1 increment by 50;
+create sequence ticker_id_seq start with 1 increment by 1;
+create sequence pair_array_values_id_seq start with 1 increment by 1;
+create sequence pair_id_seq start with 1 increment by 1;
 insert into public.pair (pair_id, pair_name)
     values
-        (0, 'a'),
-        (1, 'b'),
-        (2, 'c'),
-        (3, 'v'),
-        (4, 'p'),
-        (5, 't'),
-        (6, 'l'),
-        (7, 'h'),
-        (8, 'o')
+        (1, 'a'),
+        (2, 'b'),
+        (3, 'c'),
+        (4, 'v'),
+        (5, 'p'),
+        (6, 't'),
+        (7, 'l'),
+        (8, 'h'),
+        (9, 'o')
         ;

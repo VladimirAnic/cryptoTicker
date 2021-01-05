@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-@Table(schema = "public", name = "pair_array_values")
+@Entity(name = "PairArrayValues")
+@Table(name = "pair_array_values", schema = "public")
 public class PairArrayValues implements Serializable {
 
     private static final long serialVersionUID = 6240756137794169205L;

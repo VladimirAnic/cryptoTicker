@@ -3,8 +3,8 @@ package com.ticker.cryptoTicker.dao.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(schema = "public", name = "ticker_pair")
+@Entity(name = "TickerPair")
+@Table(name = "ticker_pair", schema = "public")
 public class TickerPair implements Serializable {
 
     private static final long serialVersionUID = -3112383011627554243L;
@@ -43,4 +43,5 @@ public class TickerPair implements Serializable {
     public void setPair(Pair pair) {
         this.pair = pair;
     }
+
 }

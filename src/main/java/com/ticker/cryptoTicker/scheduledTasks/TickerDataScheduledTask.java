@@ -1,6 +1,5 @@
 package com.ticker.cryptoTicker.scheduledTasks;
 
-import com.ticker.cryptoTicker.dao.model.Pair;
 import com.ticker.cryptoTicker.dao.model.PairArrayValues;
 import com.ticker.cryptoTicker.dao.model.Ticker;
 import com.ticker.cryptoTicker.dao.repository.PairArrayValuesRepository;
@@ -36,7 +35,7 @@ public class TickerDataScheduledTask {
     @Autowired
     private TickerRepository tickerRepository;
 
-    private Pair pair = new Pair();
+//    private Pair pair = new Pair();
 
     private Ticker ticker = new Ticker();
 
@@ -55,8 +54,8 @@ public class TickerDataScheduledTask {
 
                         if (tickerRepository.findAll().iterator().hasNext()) {
                             tickerRepository.findAll().iterator().forEachRemaining(
-                                    ticker1 -> {
-                                        if (!ticker1.getTickerName().equals(s)) {
+                                    t -> {
+                                        if (!t.getTickerName().equals(s)) {
                                             ticker.setTickerName(s);
                                             tickerRepository.save(ticker);
                                         }
@@ -76,7 +75,7 @@ public class TickerDataScheduledTask {
                         pairArrayValues.setFirstParameter(tickerInformation.ask.price);
                         pairArrayValues.setSecondParameter(BigDecimal.valueOf(tickerInformation.ask.wholeLotVolume));
                         pairArrayValues.setThirdParameter(tickerInformation.ask.lotVolume);
-                        pairArrayValues.setPairId(0);
+                        pairArrayValues.setPairId(1);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
@@ -85,54 +84,54 @@ public class TickerDataScheduledTask {
                         pairArrayValues.setSecondParameter(BigDecimal.valueOf(tickerInformation.bid.wholeLotVolume));
                         pairArrayValues.setThirdParameter(tickerInformation.bid.lotVolume);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(1);
+                        pairArrayValues.setPairId(2);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.lastTradeClosed.price);
                         pairArrayValues.setThirdParameter(tickerInformation.lastTradeClosed.lotVolume);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(2);
+                        pairArrayValues.setPairId(3);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.volume.today);
                         pairArrayValues.setSecondParameter(tickerInformation.volume.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(3);
+                        pairArrayValues.setPairId(4);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.volumeWeightAverage.today);
                         pairArrayValues.setSecondParameter(tickerInformation.volumeWeightAverage.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(4);
+                        pairArrayValues.setPairId(5);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(BigDecimal.valueOf(tickerInformation.numberOfTrades.today));
                         pairArrayValues.setSecondParameter(BigDecimal.valueOf(tickerInformation.numberOfTrades.last24hours));
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(5);
+                        pairArrayValues.setPairId(6);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.low.today);
                         pairArrayValues.setSecondParameter(tickerInformation.low.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(6);
+                        pairArrayValues.setPairId(7);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.high.today);
                         pairArrayValues.setSecondParameter(tickerInformation.high.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValues.setPairId(7);
+                        pairArrayValues.setPairId(8);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.todayOpenPrice);
-                        pairArrayValues.setPairId(8);
+                        pairArrayValues.setPairId(9);
                         pairArrayValuesRepository.save(pairArrayValues);
                         pairArrayValuesRepository.flush();
 
