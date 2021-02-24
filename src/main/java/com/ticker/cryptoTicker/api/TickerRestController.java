@@ -1,6 +1,6 @@
 package com.ticker.cryptoTicker.api;
 
-import com.ticker.cryptoTicker.dao.model.Ticker;
+import com.ticker.cryptoTicker.model.Ticker;
 import com.ticker.cryptoTicker.service.api.TickerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,12 +1,9 @@
 package com.ticker.cryptoTicker.scheduledTasks;
 
-import com.ticker.cryptoTicker.dao.model.PairArrayValues;
-import com.ticker.cryptoTicker.dao.model.Ticker;
-import com.ticker.cryptoTicker.dao.repository.PairArrayValuesRepository;
-import com.ticker.cryptoTicker.dao.repository.TickerRepository;
+import com.ticker.cryptoTicker.model.PairArrayValues;
+import com.ticker.cryptoTicker.model.Ticker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -29,11 +26,11 @@ public class TickerDataScheduledTask {
 
     String a = null;
 
-    @Autowired
-    private PairArrayValuesRepository pairArrayValuesRepository;
+//    @Autowired
+//    private PairArrayValuesRepository pairArrayValuesRepository;
 
-    @Autowired
-    private TickerRepository tickerRepository;
+//    @Autowired
+//    private TickerRepository tickerRepository;
 
 //    private Pair pair = new Pair();
 
@@ -52,19 +49,19 @@ public class TickerDataScheduledTask {
                     s ->
                     {
 
-                        if (tickerRepository.findAll().iterator().hasNext()) {
-                            tickerRepository.findAll().iterator().forEachRemaining(
-                                    t -> {
-                                        if (!t.getTickerName().equals(s)) {
-                                            ticker.setTickerName(s);
-                                            tickerRepository.save(ticker);
-                                        }
-                                    }
-                            );
-                        } else {
-                            ticker.setTickerName(s);
-                            tickerRepository.save(ticker);
-                        }
+//                        if (tickerRepository.findAll().iterator().hasNext()) {
+//                            tickerRepository.findAll().iterator().forEachRemaining(
+//                                    t -> {
+//                                        if (!t.getTickerName().equals(s)) {
+//                                            ticker.setTickerName(s);
+//                                            tickerRepository.save(ticker);
+//                                        }
+//                                    }
+//                            );
+//                        } else {
+//                            ticker.setTickerName(s);
+//                            tickerRepository.save(ticker);
+//                        }
                     }
             );
 
@@ -77,63 +74,63 @@ public class TickerDataScheduledTask {
                         pairArrayValues.setThirdParameter(tickerInformation.ask.lotVolume);
                         pairArrayValues.setPairId(1);
                         pairArrayValues.setFetchedTime(new Date());
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.bid.price);
                         pairArrayValues.setSecondParameter(BigDecimal.valueOf(tickerInformation.bid.wholeLotVolume));
                         pairArrayValues.setThirdParameter(tickerInformation.bid.lotVolume);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(2);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.lastTradeClosed.price);
                         pairArrayValues.setThirdParameter(tickerInformation.lastTradeClosed.lotVolume);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(3);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.volume.today);
                         pairArrayValues.setSecondParameter(tickerInformation.volume.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(4);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.volumeWeightAverage.today);
                         pairArrayValues.setSecondParameter(tickerInformation.volumeWeightAverage.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(5);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(BigDecimal.valueOf(tickerInformation.numberOfTrades.today));
                         pairArrayValues.setSecondParameter(BigDecimal.valueOf(tickerInformation.numberOfTrades.last24hours));
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(6);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.low.today);
                         pairArrayValues.setSecondParameter(tickerInformation.low.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(7);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.high.today);
                         pairArrayValues.setSecondParameter(tickerInformation.high.last24hours);
                         pairArrayValues.setFetchedTime(new Date());
                         pairArrayValues.setPairId(8);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         pairArrayValues.setFirstParameter(tickerInformation.todayOpenPrice);
                         pairArrayValues.setPairId(9);
-                        pairArrayValuesRepository.save(pairArrayValues);
-                        pairArrayValuesRepository.flush();
+//                        pairArrayValuesRepository.save(pairArrayValues);
+//                        pairArrayValuesRepository.flush();
 
                         System.out.println(pairArrayValues.toString());
                     }

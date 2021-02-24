@@ -1,6 +1,6 @@
 package com.ticker.cryptoTicker.service.api;
 
-import com.ticker.cryptoTicker.dao.model.Ticker;
+import com.ticker.cryptoTicker.model.Ticker;
 
 import java.util.List;
 

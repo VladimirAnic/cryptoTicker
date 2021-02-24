@@ -1,35 +1,23 @@
-package com.ticker.cryptoTicker.dao.model;
+package com.ticker.cryptoTicker.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity(name = "PairArrayValues")
-@Table(name = "pair_array_values", schema = "public")
 public class PairArrayValues implements Serializable {
 
     private static final long serialVersionUID = 6240756137794169205L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pair_array_values_id_seq")
-    @SequenceGenerator(name = "pair_array_values_id_seq", sequenceName = "pair_array_values_id_seq", allocationSize = 1)
-    @Column(name = "pair_array_values_id")
     private Long id;
 
-    @Column(name = "fetched_time", nullable = false)
     private Date fetchedTime;
 
-    @Column(name = "first_parameter", nullable = true)
     private BigDecimal firstParameter;
 
-    @Column(name = "second_parameter", nullable = true)
     private BigDecimal secondParameter;
 
-    @Column(name = "third_parameter", nullable = true)
     private BigDecimal thirdParameter;
 
-    @Column(name = "pair_id")
     private int pairId;
 
 
