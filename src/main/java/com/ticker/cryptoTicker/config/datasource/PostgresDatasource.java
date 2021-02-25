@@ -1,20 +1,14 @@
 package com.ticker.cryptoTicker.config.datasource;
 
-import com.zaxxer.hikari.HikariDataSource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
+//@Configuration
 public class PostgresDatasource {
-    @Bean
-    @ConfigurationProperties("app.datasource")
-    public HikariDataSource hikariDataSource() {
-        return DataSourceBuilder
-                .create()
-                .type(HikariDataSource.class)
-                .build();
-    }
+//    @Bean
+//    @ConfigurationProperties("app.datasource")
+//    public HikariDataSource hikariDataSource() {
+//        return DataSourceBuilder
+//                .create()
+//                .type(HikariDataSource.class)
+//                .build();
+//    }
 }
 

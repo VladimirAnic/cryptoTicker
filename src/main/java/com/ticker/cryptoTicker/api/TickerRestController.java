@@ -18,7 +18,7 @@ public class TickerRestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TickerRestController.class);
 
-    private TickerService tickerService;
+    private final TickerService tickerService;
 
     @Autowired
     public TickerRestController(TickerService tickerService) {

@@ -1,13 +1,26 @@
 package com.ticker.cryptoTicker.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@Table
 public class PairArrayValues implements Serializable {
 
     private static final long serialVersionUID = 6240756137794169205L;
 
+    @Id
+    @SequenceGenerator(
+            name = "pair_array_values_sequence",
+            sequenceName = "pair_array_values_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "pair_array_values_sequence"
+    )
     private Long id;
 
     private Date fetchedTime;
@@ -18,8 +31,18 @@ public class PairArrayValues implements Serializable {
 
     private BigDecimal thirdParameter;
 
-    private int pairId;
+//    private int pairId;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "pair_id",
+            nullable = false,
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name = "pair_pair_array_values_fk"
+            )
+    )
+    private Pair pair;
 
     public Date getFetchedTime() {
         return fetchedTime;
@@ -61,12 +84,21 @@ public class PairArrayValues implements Serializable {
         this.thirdParameter = thirdParameter;
     }
 
-    public int getPairId() {
-        return pairId;
+//    public int getPairId() {
+//        return pairId;
+//    }
+//
+//    public void setPairId(int pairId) {
+//        this.pairId = pairId;
+//    }
+
+
+    public Pair getPair() {
+        return pair;
     }
 
-    public void setPairId(int pairId) {
-        this.pairId = pairId;
+    public void setPair(Pair pair) {
+        this.pair = pair;
     }
 
     @Override
@@ -77,7 +109,7 @@ public class PairArrayValues implements Serializable {
                 ", firstParameter=" + firstParameter +
                 ", secondParameter=" + secondParameter +
                 ", thirdParameter=" + thirdParameter +
-                ", pairId=" + pairId +
+                ", pair=" + pair +
                 '}';
     }
 }
