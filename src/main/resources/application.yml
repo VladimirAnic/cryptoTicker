@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ticker
+    url: jdbc:postgresql://localhost:5432/tickerdb
     username: postgres
-    password: postgres
+    password: password
     pool-size: 30
   jpa:
     hibernate:
@@ -24,3 +24,8 @@ kraken:
 scheduled:
   task:
     job: 0/5 * * ? * *
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
